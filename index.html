@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <header class="section-padding">
+        <div class="user-icon">
+          <img src="images/scrimbalogo.png" class="profile-pic" />
+        </div>
+        <div class="title">
+          <h1>Twimba</h1>
+          <i class="fa-solid fa-dove"></i>
+        </div>
+        <div class="help-icon">
+          <i class="fa-regular fa-question-circle"></i>
+        </div>
+      </header>
+      <main>
+        <section class="section-padding">
+            <div class="tweet-input-area">
+                <img src="images/scrimbalogo.png" class="profile-pic" />
+                <textarea placeholder="What's happening?" id="tweet-input"></textarea>
+            </div>
+            <div class="tweet-actions">
+                <i class="fa-regular fa-image"></i>
+                <i class="fa-regular fa-face-smile"></i>
+                <div class="emoji-picker-container">
+                    <emoji-picker></emoji-picker>
+                </div>
+                <button id="tweet-btn">Tweet</button>
+            </div>
+        </section>
+        <div class="feed" id="feed">
+          <!-- Tweets here!! -->
+        </div>
+      </main>
+    </div>
+    <script src="./js/index.js" type="module"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+    ></script>
+  </body>
+</html>

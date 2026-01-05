@@ -1,0 +1,264 @@
+/* Reset & Base Styles */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #252525;
+}
+
+/* Typography */
+
+header h1 {
+  color: #0f8cdf;
+  margin: 0;
+  font-size: 12px;
+}
+
+.handle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  margin: 0;
+  margin-left: 4px;
+}
+
+.tweet-text {
+  width: 80%;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 4px;
+}
+
+.tweet-time {
+  font-size: 12px;
+}
+
+/* Layout & Container */
+
+.main-container {
+  max-width: 430px;
+  width: 100%;
+  margin: 50px auto 0;
+  background-color: #fff;
+  /* padding: 20px; */
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+main,
+header {
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Header */
+
+header {
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid rgb(233, 233, 233);
+  /* margin-bottom: 16px; */
+}
+
+header .title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+
+header .title .fa-dove {
+  order: -1;
+  color: #0f8cdf;
+  font-size: 20px;
+}
+
+header .help-icon {
+  text-align: right;
+}
+
+header .help-icon i {
+  color: #999;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Form Elements */
+
+.tweet-input-area {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+textarea {
+  border: none;
+  resize: none;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  height: 60px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+button {
+  background-color: #1da1f2;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Tweet Actions */
+
+.tweet-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 16px;
+}
+
+.tweet-actions i {
+  font-size: 20px;
+  color: #0f8cdf;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.tweet-actions i:hover {
+  background-color: #ebf5fc;
+}
+
+.emoji-picker-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+emoji-picker {
+  width: 100%;
+}
+
+/* Tweet Components */
+
+.tweet {
+  border-top: 1px solid rgb(233, 233, 233);
+  margin: 0;
+}
+
+.tweet:hover,
+.tweet:focus {
+  background-color: #ebf5fc;
+}
+
+.tweet-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.tweet-content {
+  width: 100%;
+}
+
+.tweet-user-details {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #555;
+}
+
+.tweet-user-details .username {
+  margin: 0;
+  color: #252525;
+  font-weight: 900;
+}
+
+.tweet-user-details .fa-circle {
+  font-size: 2px;
+  padding: 0 4px;
+}
+
+.tweet-user-details .fa-ellipsis {
+  margin-left: auto;
+}
+
+.tweet-details {
+  display: flex;
+  font-size: 13px;
+  /* justify-content: space-between; */
+  /* width: 160px; */
+  gap: 20px;
+}
+
+.tweet-detail {
+  display: flex;
+  gap: 8px;
+}
+
+.tweet-reply {
+  border-top: 1px solid rgb(233, 233, 233);
+  padding: 20px 0 0 0;
+  margin: 10px 0 10px 40px;
+  width: 80%;
+}
+
+/* Icons */
+
+i {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.fa-solid {
+  color: #999;
+}
+
+.liked {
+  color: red;
+}
+
+.retweeted {
+  color: limegreen;
+}
+
+/* Images */
+
+.profile-pic {
+  border: 1px solid rgb(233, 233, 233);
+  border-radius: 50%;
+  width: 48px;
+}
+
+.user-icon .profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Utilities */
+
+.hidden {
+  display: none;
+}
+
+
+.section-padding {
+  padding: 1rem;
+}
