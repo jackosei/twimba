@@ -121,7 +121,7 @@ function getFeedHtml() {
                     <img src="${tweet.profilePic}" class="profile-pic">
                     <div class="tweet-content">
                         <div class="tweet-user-details">
-                            <p class="username">Full Name</p>        
+                            <p class="username">${tweet.fullName}</p>        
                             <p class="handle">${tweet.handle}</p>
                             <i class="fa-solid fa-circle"></i>
                             <span class="tweet-time">
