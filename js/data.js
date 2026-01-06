@@ -8,6 +8,17 @@ export const tweetsData = [
     tweetText: `Buy Bitcoin, ETH Make 💰💰💰 low low prices. 
             Guaranteed return on investment. HMU DMs open!!`,
     replies: [],
+    hasAttachment: false,
+    attachment: {
+      image: {
+        src: "",
+        alt: "",
+      },
+      video: {
+        src: "",
+      },
+      poll: [],
+    },
     isLiked: false,
     isRetweeted: false,
     uuid: "4b161eee-c0f5-4545-9c4b-8562944223ee",
@@ -31,7 +42,7 @@ export const tweetsData = [
         tweetText: `You are wonderful just as you are! ❤️`,
       },
     ],
-    hasAttachment: false,
+    hasAttachment: true,
     attachment: {
       image: {
         src: "",
@@ -40,16 +51,20 @@ export const tweetsData = [
       video: {
         src: "",
       },
-      poll: [
-        {
-          content: "Love it! 😍",
-          score: 70,
-        },
-        {
-          content: "Needs work 🤔",
-          score: 30,
-        },
-      ],
+      poll: {
+        options: [
+          {
+            content: "Love it! 😍",
+            score: 70,
+          },
+          {
+            content: "Needs work 🤔",
+            score: 30,
+          },
+        ],
+        votes: 2943,
+        endDate: '2026-01-30'
+      },
     },
     isLiked: false,
     isRetweeted: false,
@@ -74,6 +89,17 @@ export const tweetsData = [
         tweetText: `I went last year😴`,
       },
     ],
+    hasAttachment: false,
+    attachment: {
+      image: {
+        src: "",
+        alt: "",
+      },
+      video: {
+        src: "",
+      },
+      poll: [],
+    },
     isLiked: false,
     isRetweeted: false,
     uuid: "3c23454ee-c0f5-9g9g-9c4b-77835tgs2",
@@ -84,7 +110,7 @@ export const tweetsData = [
     profilePic: `images/flower.png`,
     likes: 10,
     retweets: 3,
-    tweetText: `Are you a coder if you only know HTML?`,
+    tweetText: `Are you a coder if you only know HTML? #coding #html #webdev`,
     replies: [
       {
         handle: `@StackOverflower ☣️`,
@@ -97,9 +123,19 @@ export const tweetsData = [
         tweetText: `You are wonderful just as you are! ❤️`,
       },
     ],
+    hasAttachment: false,
+    attachment: {
+      image: {
+        src: "",
+        alt: "",
+      },
+      video: {
+        src: "",
+      },
+      poll: [],
+    },
     isLiked: false,
     isRetweeted: false,
     uuid: "8hy671sff-c0f5-4545-9c4b-1237gyys45",
   },
-  
 ];

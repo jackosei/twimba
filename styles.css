@@ -50,7 +50,6 @@ header h1 {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 
-
 main,
 header {
   width: auto;
@@ -120,6 +119,12 @@ button {
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
+  box-shadow: 2px 2px 10px #1da0f256;
+}
+
+button:hover {
+  background-color: hsla(203, 89%, 53%, 0.85);
+  box-shadow: 2px 2px 15px #1da0f293;
 }
 
 /* Tweet Actions */
@@ -163,7 +168,7 @@ emoji-picker {
 
 .tweet:hover,
 .tweet:focus {
-  background-color: #ebf5fc;
+  background-color: hsl(210, 50%, 98%);
 }
 
 .tweet-inner {
@@ -219,6 +224,61 @@ emoji-picker {
   width: 80%;
 }
 
+/* Poll attachment */
+
+.poll-attachment {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: transparent;
+  overflow: hidden;
+  border: .5px solid rgb(233, 233, 233);
+  margin-bottom: 16px;
+}
+
+.poll-option {
+  position: relative;
+  padding: 14px;
+}
+
+/* .poll-option + .poll-option {
+  margin-top: 2px;
+} */
+
+.poll-option-bar {
+  position: absolute;
+  inset: 0;
+}
+
+.poll-option-bar.poll-option-1 {
+  background-color: #e8f5fe;
+}
+
+.poll-option-bar.poll-option-2 {
+  background-color: rgb(246, 246, 246);
+}
+
+.poll-option-content {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.poll-option-score {
+  color: #555;
+  font-weight: 500;
+}
+
+.poll-meta {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #555;
+  padding: 14px;
+  gap: 8px;
+}
 /* Icons */
 
 i {
@@ -258,7 +318,15 @@ i {
   display: none;
 }
 
-
 .section-padding {
   padding: 1rem;
+}
+
+.hashtag {
+  color: #0f8cdf;
+  font-weight: 600;
+}
+
+.hashtag:hover {
+  text-decoration: underline;
 }
