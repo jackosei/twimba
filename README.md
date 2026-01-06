@@ -51,10 +51,16 @@ Twimba lets you:
 - **Add new features**: Implement in `js/index.js`, keep state shape consistent in `js/data.js`.
 - **Log changes**: Document each new feature or refactor under **Changelog** with a short, technical note.
 
-
 ### Changelog
 
 Versioning follows Semantic Versioning: `MAJOR.MINOR.PATCH`.
+
+- **v0.4.0 – Responsive layout & sticky header**
+  - Updated layout to use full viewport height on mobile and center a mobile-sized app shell on larger screens.
+  - Added sticky header to keep the Twimba title and actions visible while scrolling the feed.
+
+- **v0.3.1 – Minor fix**
+  - Rendering of user's full name instead of hardcoded text
 
 - **v0.3.0 – Dynamic timestamps**
   - Implemented dynamic tweet timestamps with relative time formatting (e.g. `5m`, `2h`, `3d`).

@@ -43,11 +43,24 @@ header h1 {
 .main-container {
   max-width: 430px;
   width: 100%;
-  margin: 50px auto 0;
+  min-height: 100vh;
   background-color: #fff;
-  /* padding: 20px; */
-  border-radius: 10px;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Centered "mobile-sized" app on desktop */
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .main-container {
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
 }
 
 main,
@@ -59,12 +72,15 @@ header {
 /* Header */
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 0.5px solid rgb(233, 233, 233);
-  /* margin-bottom: 16px; */
+  background-color: #fff;
 }
 
 header .title {
