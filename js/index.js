@@ -1,11 +1,8 @@
 import { tweetsData } from "./data.js";
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+import { initializeData, saveToLocalStorage } from "./dataStorage.js";
+import { getRelativeTimeString } from "./utilities.js"
 
-/*
-Challenge:
-3. We could improve index.js by moving one line
-   of code to a better position. Find it and move it!
-*/
 
 document.addEventListener("click", function (e) {
     if (e.target.dataset.like) {
@@ -31,6 +28,7 @@ function handleLikeClick(tweetId) {
     }
     targetTweetObj.isLiked = !targetTweetObj.isLiked;
     render();
+    saveToLocalStorage(tweetsData);
 }
 
 function handleRetweetClick(tweetId) {
@@ -45,6 +43,7 @@ function handleRetweetClick(tweetId) {
     }
     targetTweetObj.isRetweeted = !targetTweetObj.isRetweeted;
     render();
+    saveToLocalStorage(tweetsData);
 }
 
 function handleReplyClick(replyId) {
@@ -86,6 +85,7 @@ function handleTweetBtnClick() {
         });
         render();
         tweetInput.value = "";
+        saveToLocalStorage(tweetsData);
     }
 }
 
@@ -220,39 +220,18 @@ function renderPollAttachment(pollData) {
     </div>`;
 }
 
-function generateRandomDate() {
-    // Timestamps in milliseconds
-    const now = Date.now();
-    const oneMinute = 60 * 1000;
-    const sevenDays = 7 * 24 * 60 * 60 * 1000;
-
-    // Create bounds
-    const start = now - sevenDays;
-    const end = now - oneMinute;
-
-    // Generate a random timestamp between start and end
-    const randomTimestamp = Math.floor(Math.random() * (end - start) + start);
-
-    // Convert back to a Date object and return
-    return new Date(randomTimestamp);
-}
-
-function getRelativeTimeString(date) {
-    const diffMs = Date.now() - date.getTime();
-    const diffMinutes = Math.floor(diffMs / (1000 * 60));
-
-    if (diffMinutes < 1) return "now";
-    if (diffMinutes < 60) return `${diffMinutes}m`;
-
-    const diffHours = Math.floor(diffMinutes / 60);
-    if (diffHours < 24) return `${diffHours}h`;
-
-    const diffDays = Math.floor(diffHours / 24);
-    return `${diffDays}d`;
-}
+let isFirstRender = true;
 
 function render() {
     document.getElementById("feed").innerHTML = getFeedHtml();
+
+    // After first render, save timestamps to localStorage
+    if (isFirstRender) {
+        isFirstRender = false;
+        saveToLocalStorage(tweetsData);
+    }
 }
 
+
+initializeData(tweetsData)
 render();
