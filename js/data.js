@@ -102,7 +102,7 @@ export const tweetsData = [
     },
     isLiked: false,
     isRetweeted: false,
-    uuid: "3c23454ee-c0f5-9g9g-9c4b-77835tgs2",
+    uuid: "3c23454ee-c0f5-9g9g-9c4b-77805tgs1",
   },
   {
     fullName: "Noob Coder",
@@ -136,6 +136,6 @@ export const tweetsData = [
     },
     isLiked: false,
     isRetweeted: false,
-    uuid: "8hy671sff-c0f5-4545-9c4b-1237gyys45",
+    uuid: "8hy671sff-c0f5-4545-9c4b-9345gyys00",
   },
 ];

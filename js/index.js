@@ -55,21 +55,34 @@ function handleTweetBtnClick() {
     const tweetInput = document.getElementById("tweet-input");
 
     /*
-  Challenge:
-  1. No empty tweets!
-  2. Clear the textarea after tweeting!
-  */
+    Challenge:
+    1. No empty tweets!
+    2. Clear the textarea after tweeting!
+    */
     if (tweetInput.value) {
         tweetsData.unshift({
+            fullName: "Jack Osei",
             handle: `@Scrimba`,
             profilePic: `images/scrimbalogo.png`,
             likes: 0,
             retweets: 0,
             tweetText: tweetInput.value,
             replies: [],
+            hasAttachment: false,
+            attachment: {
+                image: {
+                    src: "",
+                    alt: "",
+                },
+                video: {
+                    src: "",
+                },
+                poll: [],
+            },
             isLiked: false,
             isRetweeted: false,
             uuid: uuidv4(),
+            timestamp: Date.now() - (60 * 1000),
         });
         render();
         tweetInput.value = "";
@@ -80,17 +93,9 @@ function getFeedHtml() {
     let feedHtml = ``;
 
     tweetsData.forEach(function (tweet) {
-        let likeIconClass = "";
+        const likeIconClass = tweet.isLiked ? "liked" : "";
 
-        if (tweet.isLiked) {
-            likeIconClass = "liked";
-        }
-
-        let retweetIconClass = "";
-
-        if (tweet.isRetweeted) {
-            retweetIconClass = "retweeted";
-        }
+        const retweetIconClass = tweet.isRetweeted ? "retweeted" : "";
 
         let repliesHtml = "";
 
@@ -110,10 +115,14 @@ function getFeedHtml() {
             });
         }
 
-        let attachmentHtml = "";
-        if (tweet.hasAttachment && tweet.attachment && tweet.attachment.poll) {
-            attachmentHtml = renderPollAttachment(tweet.attachment.poll);
-        }
+        const attachmentHtml =
+            tweet.hasAttachment && tweet.attachment && tweet.attachment.poll
+                ? renderPollAttachment(tweet.attachment.poll)
+                : "";
+
+        const tweetDate = tweet.timestamp 
+        ? new Date(tweet.timestamp) 
+        : generateRandomDate();
 
         feedHtml += `
             <div class="tweet section-padding">
@@ -125,11 +134,13 @@ function getFeedHtml() {
                             <p class="handle">${tweet.handle}</p>
                             <i class="fa-solid fa-circle"></i>
                             <span class="tweet-time">
-                                ${getRelativeTimeString(generateRandomDate())}
+                                ${getRelativeTimeString(tweetDate)}
                             </span>
                             <i class="fa-solid fa-ellipsis"></i>
                         </div>
-                        <p class="tweet-text">${formatHashtags(tweet.tweetText)}</p>
+                        <p class="tweet-text">${formatHashtags(
+            tweet.tweetText
+        )}</p>
                         ${attachmentHtml}
                         <div class="tweet-details">
                             <span class="tweet-detail">
@@ -175,7 +186,8 @@ function renderPollAttachment(pollData) {
         .map(function (option, index) {
             return `
         <div class="poll-option">
-            <div class="poll-option-bar ${'poll-option-' + (index+1)}" style="width: ${option.score}%;"></div>
+            <div class="poll-option-bar ${"poll-option-" + (index + 1)
+                }" style="width: ${option.score}%;"></div>
             <div class="poll-option-content">
                 <span class="poll-option-text">${option.content}</span>
                 <span class="poll-option-score">${option.score}%</span>
@@ -203,43 +215,40 @@ function renderPollAttachment(pollData) {
         ${optionsHtml}
         <div class="poll-meta">
             <span class="poll-votes">${pollData.votes.toLocaleString()} votes</span><span>·</span>
-            ${timeLeftLabel
-            ? `${timeLeftLabel}`
-            : ""
-        }
+            ${timeLeftLabel ? `${timeLeftLabel}` : ""}
         </div>
     </div>`;
 }
 
 function generateRandomDate() {
     // Timestamps in milliseconds
-    const now = Date.now()
-    const oneMinute = 60 * 1000
-    const sevenDays = 7 * 24 * 60 * 60 * 1000
+    const now = Date.now();
+    const oneMinute = 60 * 1000;
+    const sevenDays = 7 * 24 * 60 * 60 * 1000;
 
     // Create bounds
-    const start = now - sevenDays
-    const end = now - oneMinute
+    const start = now - sevenDays;
+    const end = now - oneMinute;
 
     // Generate a random timestamp between start and end
-    const randomTimestamp = Math.floor(Math.random() * (end - start) + start)
+    const randomTimestamp = Math.floor(Math.random() * (end - start) + start);
 
     // Convert back to a Date object and return
-   return new Date(randomTimestamp)
+    return new Date(randomTimestamp);
 }
 
 function getRelativeTimeString(date) {
-    const diffMs = Date.now() - date.getTime()
-    const diffMinutes = Math.floor(diffMs / (1000 * 60))
+    const diffMs = Date.now() - date.getTime();
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
 
-    if (diffMinutes < 1) return 'now'
-    if (diffMinutes < 60) return `${diffMinutes}m`
+    if (diffMinutes < 1) return "now";
+    if (diffMinutes < 60) return `${diffMinutes}m`;
 
-    const diffHours = Math.floor(diffMinutes / 60)
-    if (diffHours < 24) return `${diffHours}h`
+    const diffHours = Math.floor(diffMinutes / 60);
+    if (diffHours < 24) return `${diffHours}h`;
 
-    const diffDays = Math.floor(diffHours / 24)
-    return `${diffDays}d`
+    const diffDays = Math.floor(diffHours / 24);
+    return `${diffDays}d`;
 }
 
 function render() {
