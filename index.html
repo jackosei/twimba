@@ -38,20 +38,52 @@
       </header>
       <main>
         <section class="section-padding">
-            <div class="tweet-input-area">
-                <img src="images/scrimbalogo.png" class="profile-pic" />
-                <textarea placeholder="What's happening?" id="tweet-input"></textarea>
-            </div>
-            <div class="tweet-actions">
-                <i class="fa-solid fa-square-poll-horizontal"></i>
+          <!-- Tweet Input Area -->
+          <div class="tweet-input-area">
+            <img src="images/scrimbalogo.png" class="profile-pic" />
+            <textarea
+              placeholder="What's happening?"
+              id="tweet-input"
+            ></textarea>
+          </div>
+
+          <!-- Image Preview Container -->
+          <div class="tweet-image-preview hidden" id="tweet-image-preview">
+            <img
+              id="preview-img"
+              src=""
+              alt="Selected Image"
+              style="max-width: 200px; border-radius: 8px"
+            />
+            <i class="fa-solid fa-xmark remove-image-btn" id="remove-image"></i>
+          </div>
+
+          <!-- Tweet Actions -->
+          <div class="tweet-actions">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
+
+            <!-- Icon and Hidden File Input -->
+            <div class="tweet-image-controls">
+              <label for="imageInput" style="cursor: pointer">
                 <i class="fa-regular fa-image"></i>
-                <i class="fa-regular fa-face-smile"></i>
-                <div class="emoji-picker-container">
-                    <emoji-picker></emoji-picker>
-                </div>
-                <button id="tweet-btn">Tweet</button>
+              </label>
+              <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                style="display: none"
+              />
             </div>
+
+            <i class="fa-regular fa-face-smile"></i>
+            <div class="emoji-picker-container">
+              <emoji-picker></emoji-picker>
+            </div>
+            <button class="tweet-btn" id="tweet-btn">Tweet</button>
+          </div>
         </section>
+
+        <!-- Feed -->
         <div class="feed" id="feed">
           <!-- Tweets here!! -->
         </div>
