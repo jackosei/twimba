@@ -13,8 +13,16 @@ document.addEventListener("click", function (e) {
   } else if (e.target.id === "tweet-btn") {
     handleTweetBtnClick();
   } else if (e.target.id === "remove-image") {
-    console.log("Remove image");
     removeImageAttachment();
+  } else if (e.target.dataset.ellipsis) {
+    handleEllipsisClick(e.target.dataset.ellipsis);
+  } else if (e.target.dataset.delete) {
+    removeTweet(e.target.dataset.delete);
+  } else {
+    // Close all menus if clicking elsewhere
+    document.querySelectorAll(".tweet-menu").forEach((menu) => {
+      menu.classList.add("hidden");
+    });
   }
 });
 
@@ -107,6 +115,34 @@ function addTweet(tweetText, imageFile) {
   saveToLocalStorage(tweetsData);
 }
 
+function handleEllipsisClick(tweetId) {
+  const menuId = `menu-${tweetId}`;
+  const menu = document.getElementById(menuId);
+
+  // Close other open menus
+  document.querySelectorAll(".tweet-menu").forEach((m) => {
+    if (m.id !== menuId) m.classList.add("hidden");
+  });
+
+  // Toggle current menu
+  if (menu) {
+    menu.classList.toggle("hidden");
+  }
+}
+
+function removeTweet(tweetId) {
+  const index = tweetsData.findIndex(function (tweet) {
+    return tweet.uuid === tweetId;
+  });
+
+  if (index > -1) {
+    tweetsData.splice(index, 1);
+  }
+
+  render();
+  saveToLocalStorage(tweetsData);
+}
+
 function handleTweetBtnClick() {
   const tweetInput = document.getElementById("tweet-input");
   const imageFile = document.getElementById("imageInput").files[0];
@@ -181,7 +217,21 @@ function getFeedHtml() {
                             <span class="tweet-time">
                                 ${getRelativeTimeString(tweetDate)}
                             </span>
-                            <i class="fa-solid fa-ellipsis"></i>
+                            <div class="tweet-menu-container">
+                                <i data-ellipsis="${
+                                  tweet.uuid
+                                }" class="fa-solid fa-ellipsis"></i>
+                                <div id="menu-${
+                                  tweet.uuid
+                                }" class="tweet-menu hidden">
+                                    <div class="menu-item delete-btn" data-delete="${
+                                      tweet.uuid
+                                    }">
+                                        <i class="fa-regular fa-trash-can"></i>
+                                        Delete
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <p class="tweet-text">${formatHashtags(
                           tweet.tweetText
