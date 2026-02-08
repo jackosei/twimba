@@ -2,6 +2,10 @@
 
 A minimal Twitter-style feed built with vanilla JavaScript, focusing on DOM manipulation, state management, and UX details without frameworks.
 
+### Latest Update
+
+- **v0.8.0 (2026-02-08)**: Added emoji picker to allow users to insert emojis into tweets.
+
 ### Overview
 
 Twimba lets you:

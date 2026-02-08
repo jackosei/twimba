@@ -2,6 +2,10 @@
 
 Versioning follows Semantic Versioning: `MAJOR.MINOR.PATCH`.
 
+- **v0.8.0 – Emoji Picker**
+
+  - Added emoji picker to allow users to insert emojis into tweets.
+
 - **v0.7.0 – Tweet Actions Dropdown**
 
   - Added a dropdown menu accessed via the ellipsis icon.
