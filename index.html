@@ -1,98 +1,78 @@
 <html>
-  <head>
-    <!-- Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./styles.css" />
-    <!-- Font Awesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<head>
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <body>
-    <div class="main-container">
-      <header class="section-padding">
-        <div class="user-icon">
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main-container">
+    <header class="section-padding">
+      <div class="user-icon">
+        <img src="images/scrimbalogo.png" class="profile-pic" />
+      </div>
+      <div class="title">
+        <h1>Twimba</h1>
+        <i class="fa-solid fa-dove"></i>
+      </div>
+      <div class="help-icon">
+        <i class="fa-regular fa-question-circle"></i>
+      </div>
+    </header>
+    <main>
+      <section class="section-padding">
+        <!-- Tweet Input Area -->
+        <div class="tweet-input-area">
           <img src="images/scrimbalogo.png" class="profile-pic" />
+          <textarea placeholder="What's happening?" id="tweet-input"></textarea>
         </div>
-        <div class="title">
-          <h1>Twimba</h1>
-          <i class="fa-solid fa-dove"></i>
+
+        <!-- Image Preview Container -->
+        <div class="tweet-image-preview hidden" id="tweet-image-preview">
+          <img id="preview-img" src="" alt="Selected Image" style="max-width: 200px; border-radius: 8px" />
+          <i class="fa-solid fa-xmark remove-image-btn" id="remove-image"></i>
         </div>
-        <div class="help-icon">
-          <i class="fa-regular fa-question-circle"></i>
-        </div>
-      </header>
-      <main>
-        <section class="section-padding">
-          <!-- Tweet Input Area -->
-          <div class="tweet-input-area">
-            <img src="images/scrimbalogo.png" class="profile-pic" />
-            <textarea
-              placeholder="What's happening?"
-              id="tweet-input"
-            ></textarea>
+
+        <!-- Tweet Actions -->
+        <div class="tweet-actions">
+          <i class="fa-solid fa-square-poll-horizontal"></i>
+
+          <!-- Icon and Hidden File Input -->
+          <div class="tweet-image-controls">
+            <label for="imageInput" style="cursor: pointer">
+              <i class="fa-regular fa-image"></i>
+            </label>
+            <input type="file" id="imageInput" accept="image/*" style="display: none" />
           </div>
 
-          <!-- Image Preview Container -->
-          <div class="tweet-image-preview hidden" id="tweet-image-preview">
-            <img
-              id="preview-img"
-              src=""
-              alt="Selected Image"
-              style="max-width: 200px; border-radius: 8px"
-            />
-            <i class="fa-solid fa-xmark remove-image-btn" id="remove-image"></i>
-          </div>
+          <i class="fa-regular fa-face-smile" id="emoji-picker-icon"></i>
 
-          <!-- Tweet Actions -->
-          <div class="tweet-actions">
-            <i class="fa-solid fa-square-poll-horizontal"></i>
-
-            <!-- Icon and Hidden File Input -->
-            <div class="tweet-image-controls">
-              <label for="imageInput" style="cursor: pointer">
-                <i class="fa-regular fa-image"></i>
-              </label>
-              <input
-                type="file"
-                id="imageInput"
-                accept="image/*"
-                style="display: none"
-              />
-            </div>
-
-            <i class="fa-regular fa-face-smile"></i>
-            <div class="emoji-picker-container">
-              <emoji-picker></emoji-picker>
-            </div>
-            <button class="tweet-btn" id="tweet-btn">Tweet</button>
-          </div>
-        </section>
-
-        <!-- Feed -->
-        <div class="feed" id="feed">
-          <!-- Tweets here!! -->
+          <button class="tweet-btn" id="tweet-btn">Tweet</button>
         </div>
-      </main>
-    </div>
-    <script src="./js/index.js" type="module"></script>
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
-    ></script>
-  </body>
+      </section>
+
+      <!-- Feed -->
+      <div class="feed" id="feed">
+        <!-- Tweets here!! -->
+      </div>
+    </main>
+  </div>
+  <div class="emoji-picker-container hidden" id="emoji-picker-container">
+    <emoji-picker></emoji-picker>
+  </div>
+  <script src="./js/index.js" type="module"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+</body>
+
 </html>

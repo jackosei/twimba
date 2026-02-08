@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initializeData, saveToLocalStorage } from "./dataStorage.js";
 import { getRelativeTimeString, compressImage } from "./utilities.js";
 
+const tweetInput = document.getElementById('tweet-input')
+
 document.addEventListener("click", function (e) {
   if (e.target.dataset.like) {
     handleLikeClick(e.target.dataset.like);
@@ -18,6 +20,8 @@ document.addEventListener("click", function (e) {
     handleEllipsisClick(e.target.dataset.ellipsis);
   } else if (e.target.dataset.delete) {
     removeTweet(e.target.dataset.delete);
+  } else if (e.target.id === "emoji-picker-icon") {
+    handleEmojiClick();
   } else {
     // Close all menus if clicking elsewhere
     document.querySelectorAll(".tweet-menu").forEach((menu) => {
@@ -26,9 +30,31 @@ document.addEventListener("click", function (e) {
   }
 });
 
+document.querySelector('emoji-picker').addEventListener("emoji-click", function (e) {
+  console.log(e.detail)
+
+  const emoji = e.detail.unicode || e.detail.emoji.unicode
+
+  tweetInput.focus()
+
+  tweetInput.setRangeText(
+    emoji, 
+    tweetInput.selectionStart, 
+    tweetInput.selectionEnd, 
+    'end'
+  );
+
+})
+
 document.getElementById("imageInput").addEventListener("change", function () {
   handleImageAttachment();
 });
+
+function handleEmojiClick() {
+  console.log('you got me')
+  document.body.classList.toggle('space-for-emoji-picker')
+  document.getElementById('emoji-picker-container').classList.toggle('hidden')
+}
 
 function removeImageAttachment() {
   document.getElementById("preview-img").src = "";
@@ -218,15 +244,12 @@ function getFeedHtml() {
                                 ${getRelativeTimeString(tweetDate)}
                             </span>
                             <div class="tweet-menu-container">
-                                <i data-ellipsis="${
-                                  tweet.uuid
-                                }" class="fa-solid fa-ellipsis"></i>
-                                <div id="menu-${
-                                  tweet.uuid
-                                }" class="tweet-menu hidden">
-                                    <div class="menu-item delete-btn" data-delete="${
-                                      tweet.uuid
-                                    }">
+                                <i data-ellipsis="${tweet.uuid
+      }" class="fa-solid fa-ellipsis"></i>
+                                <div id="menu-${tweet.uuid
+      }" class="tweet-menu hidden">
+                                    <div class="menu-item delete-btn" data-delete="${tweet.uuid
+      }">
                                         <i class="fa-regular fa-trash-can"></i>
                                         Delete
                                     </div>
@@ -234,8 +257,8 @@ function getFeedHtml() {
                             </div>
                         </div>
                         <p class="tweet-text">${formatHashtags(
-                          tweet.tweetText
-                        )}</p>
+        tweet.tweetText
+      )}</p>
                         ${attachmentHtml}
                         ${attachmentImageHtml}
                         <div class="tweet-details">
@@ -282,9 +305,8 @@ function renderPollAttachment(pollData) {
     .map(function (option, index) {
       return `
         <div class="poll-option">
-            <div class="poll-option-bar ${
-              "poll-option-" + (index + 1)
-            }" style="width: ${option.score}%;"></div>
+            <div class="poll-option-bar ${"poll-option-" + (index + 1)
+        }" style="width: ${option.score}%;"></div>
             <div class="poll-option-content">
                 <span class="poll-option-text">${option.content}</span>
                 <span class="poll-option-score">${option.score}%</span>

@@ -9,6 +9,7 @@ body {
 
 body {
   background-color: #252525;
+  position: relative;
 }
 
 /* Typography */
@@ -197,14 +198,15 @@ button.tweet-btn:hover {
 }
 
 .emoji-picker-container {
-  display: none;
-  position: absolute;
-  top: 0;
-  width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 400px;
+  height: 300px;
 }
 
 emoji-picker {
   width: 100%;
+  height: 100%;
 }
 
 /* Tweet Components */
@@ -375,6 +377,10 @@ i {
 
 .hidden {
   display: none !important;
+}
+
+.space-for-emoji-picker {
+  margin-bottom: 300px;
 }
 
 .section-padding {
